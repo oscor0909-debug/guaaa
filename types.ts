@@ -41,7 +41,8 @@ export interface ExpenseItem {
 export interface ScheduleEvent {
   id: string;
   date: string; // YYYY-MM-DD
-  time: string; // HH:mm
+  time: string; // HH:mm (Start Time)
+  endTime?: string; // HH:mm (End Time)
   title: string;
   location: string;
   type: 'sightseeing' | 'food' | 'transport' | 'hotel' | 'shopping';

@@ -168,6 +168,7 @@ const ScheduleView = ({
         id: '',
         date: activeDate,
         time: '09:00',
+        endTime: '',
         title: '',
         location: '',
         type: 'sightseeing',
@@ -328,7 +329,8 @@ const ScheduleView = ({
                     </span>
                   </div>
                   <div className="text-stone-500 text-sm flex items-center gap-2 mb-2">
-                    <i className="fa-regular fa-clock"></i> {event.time}
+                    <i className="fa-regular fa-clock"></i> 
+                    {event.time} {event.endTime ? `~ ${event.endTime}` : ''}
                     <span className="w-1 h-1 bg-stone-300 rounded-full"></span>
                     {/* Google Map Link for Event Location */}
                     <a
@@ -411,9 +413,10 @@ const ScheduleView = ({
                 </select>
             </div>
             <div className="grid grid-cols-2 gap-4">
-               <Input label="時間" type="time" value={editingEvent.time} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEditingEvent({...editingEvent, time: e.target.value})} />
-              <Input label="地點" value={editingEvent.location} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEditingEvent({...editingEvent, location: e.target.value})} />
+               <Input label="開始時間" type="time" value={editingEvent.time} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEditingEvent({...editingEvent, time: e.target.value})} />
+               <Input label="結束時間" type="time" value={editingEvent.endTime || ''} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEditingEvent({...editingEvent, endTime: e.target.value})} />
             </div>
+            <Input label="地點" value={editingEvent.location} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEditingEvent({...editingEvent, location: e.target.value})} />
             <Input label="備註" value={editingEvent.notes || ''} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEditingEvent({...editingEvent, notes: e.target.value})} placeholder="新增備註..."/>
             
             <div className="pt-2 flex gap-2">
