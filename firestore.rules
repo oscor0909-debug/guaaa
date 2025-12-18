@@ -1,0 +1,11 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 嚴格的安全規則：僅允許已登入的使用者 (request.auth != null) 進行讀寫
+    // 您的 App 使用 signInAnonymously，所以這會保護資料庫不被未授權的外部人士存取
+    match /{document=**} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}

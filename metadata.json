@@ -1,0 +1,7 @@
+{
+  "name": "GuaTravel",
+  "description": "一個溫馨的動物森友會風格團體旅遊規劃 App，包含共用行程、記帳和預訂管理功能。",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
